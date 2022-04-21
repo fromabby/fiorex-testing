@@ -142,16 +142,16 @@ const StocksList = () => {
                     <div style={widthStyle}>
                         <MDBDataTableV5
                             hover
-                            entriesOptions={[10, 15, 20, 25]}
-                            entries={10}
+                            entriesOptions={[20, 30, 40]}
+                            entries={20}
                             pagesAmount={4}
                             data={setStockData()}
                             searchTop
                             searchBottom={false}
                             noBottomColumns={false}
-                            bordered
                             striped
                             fullPagination
+                            scrollX
                         />
                     </div>
                 </div>

@@ -131,7 +131,7 @@ const AdminOrderForm = () => {
                                         <hr />
 
                                         <h4 className="my-4">Ordered Items:</h4>
-                                        <p>Message to include: </p>{order.message}
+                                        <p>Message to include: {order.message}</p>
                                         {order.products && order.products.map(product => ( 
                                             <div className="row my-5"> 
                                                 <div className="col-4 col-lg-2">
@@ -174,7 +174,6 @@ const AdminOrderForm = () => {
                                         </Form.Group>
                                         <Form.Group className="mb-3" controlId="name">
                                             <Form.Label>Remarks</Form.Label>
-                                            {/* <Form.Control type="text" value={order.description} placeholder="Remarks" onChange={(e) => setOrder({ ...order, description: e.target.value })} /> */}
                                             <textarea placeholder="Enter remarks" value={order.description} className="form-control" id="description_field" onChange={(e) => setOrder({ ...order, description: e.target.value })} rows="4" required></textarea>
                                         </Form.Group>
                                         <Button variant="primary" type="submit">

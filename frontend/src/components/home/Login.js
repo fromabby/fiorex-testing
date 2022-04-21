@@ -1,10 +1,10 @@
-import React, { Fragment, useState, useEffect } from 'react'
+import React, { Fragment, useState, useEffect, } from 'react'
 import { useAlert } from 'react-alert'
 import { Link } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
-import { Container, Form, Button, Card } from 'react-bootstrap'
 import { login, clearErrors } from '../../actions/authActions'
-import { useNavigate } from "react-router-dom"
+import { useNavigate } from "react-router-dom";
+import Metadata from "../layout/Metadata";
 
 const Login = () => {
     const alert = useAlert()
@@ -15,6 +15,11 @@ const Login = () => {
 
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
+
+    const [showPassword, setShowPassword] = useState('false')
+    const [showConfirm, setShowConfirm] = useState('false')
+
+    const showPasswordToggle = () => setShowPassword(!showPassword)
 
     useEffect(() => {
         if (error) {
@@ -46,6 +51,7 @@ const Login = () => {
                     
 
                     <div className="row wrapper">
+                    <Metadata title={'Log-in'}/>
                         <div className="col-10 col-lg-5">
                         <div className = "loginBox">
                         
@@ -66,15 +72,26 @@ const Login = () => {
                             </div>
                 
                             <div className="form-group">
+                            
                             <label htmlFor="password_field">Password</label>
+                            <div className="input-group">
                             <input
                                 required
-                                type="password"
+                                type={showPassword ? "password" : "showPass"}
                                 id="password_field"
                                 className="form-control"
                                 value={password}
                                 onChange = {(e) => setPassword(e.target.value)}
                             />
+                            <div className="input-group-addon">
+                            <div  id = "showPass" onClick={showPasswordToggle}>
+                                            <span className="fa-sm">
+                                                <i className={showPassword ? "fa-regular fa-eye-slash" : "fa-regular fa-eye"}></i>
+                                            </span>
+                                        </div>
+                            </div>
+                            </div>
+                            
                             </div>
 
                             <Link to ="/password/forgot" className="float-right mb-4" id = "linkHover">Forgot Password?</Link>
